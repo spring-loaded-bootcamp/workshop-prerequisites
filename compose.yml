@@ -1,0 +1,31 @@
+services:
+  hello:
+    image: dashaun/hello-spring:v0.0.1
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+  ngrok:
+    image: ngrok/ngrok:latest
+    command: http hello:8080
+    environment:
+      - NGROK_AUTHTOKEN=YOUR_AUTH_TOKEN
+    ports:
+      - "4040:4040"
+    restart: unless-stopped
+  redis:
+    image: redis:latest
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+  rabbitmq:
+    image: 'rabbitmq:latest'
+    environment:
+      - 'RABBITMQ_DEFAULT_PASS=secret'
+      - 'RABBITMQ_DEFAULT_USER=myuser'
+    ports:
+      - '5672:5672'

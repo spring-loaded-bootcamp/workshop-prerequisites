@@ -35,7 +35,7 @@ Ngrok will allow your local applications to be accessible from the public intern
 ## Validation
 
 ```bash
-git clone github.com/spring-loaded-bootcamp/workshop-prerequisites
+git clone https://github.com/spring-loaded-bootcamp/workshop-prerequisites
 cd workshop-prerequisites
 ```
 > Clone the repository and jump into the directory
